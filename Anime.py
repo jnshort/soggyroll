@@ -30,8 +30,10 @@ class Anime:
         soup = bs.BeautifulSoup(req.read(), features="html.parser")
         div = soup.find('div', {'class': "linetitle2 c2"})
         episode_links = div.find_all('a')
+        episode_links.reverse()
         for link in episode_links:
             self.episodes.append(Episode(link.get('href'), self))
+
         
     def get_next_episode(self):
         return len(self.episodes)+1
