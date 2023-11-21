@@ -1,7 +1,7 @@
 class Episode:
     def __init__(self, source, anime):
         self.name = anime.name
-        self.url = "https://animeheaven.me/" + source
+        self.url = source
         self.episode_number = anime.get_next_episode()
 
     def query(self):

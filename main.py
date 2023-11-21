@@ -35,8 +35,10 @@ def anime_menu(coll, anime):
     action = input("Enter choice: ")
     match action:
         case "1":
+            episode = anime.episodes[anime.current_episode-1]  
             coll.anime_set_current_episode(anime, anime.current_episode + 1)
-            webbrowser.open_new(anime.url)
+            webbrowser.open_new(episode.url)
+
             return True
         case "2":
             max = len(anime.episodes)
