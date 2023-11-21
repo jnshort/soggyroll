@@ -35,18 +35,25 @@ def anime_menu(coll, anime):
     action = input("Enter choice: ")
     match action:
         case "1":
-            episode = anime.episodes[anime.current_episode-1]  
-            coll.anime_set_current_episode(anime, anime.current_episode + 1)
-            webbrowser.open_new(episode.url)
+            try:
+                episode = anime.episodes[anime.current_episode-1]  
+                coll.anime_set_current_episode(anime, anime.current_episode + 1)
+                webbrowser.open_new(episode.url)
+            except IndexError:
+                print("Episode not out yet")
+                print(f"Opening episode list for: {anime.url}")
+                webbrowser.open_new(anime.url)
+
 
             return True
         case "2":
             max = len(anime.episodes)
             valid = False
             while not valid:
+                print(f"There are currently {max} episodes")
                 new_ep = input("Enter episode number: ")
                 if new_ep.isalnum():
-                    if int(new_ep) in range(max):
+                    if int(new_ep) in range(max+1):
                         coll.anime_set_current_episode(anime, int(new_ep))
                         valid = True
             return True
