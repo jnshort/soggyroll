@@ -62,9 +62,9 @@ def anime_menu(coll, anime):
 
 
 def add_anime(coll):
+    print("*" * 50)
     adding = True
     while adding:
-        print("*" * 50)
         print("Adding new anime")
         url = input("Enter url: ")
         coll.add_tracked(url)
