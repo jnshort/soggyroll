@@ -1,0 +1,4 @@
+tracked.txt
+venv
+__pycache__
+db.py
